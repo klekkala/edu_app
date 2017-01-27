@@ -1,7 +1,7 @@
 var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 	
 	var lineChartData = {
-			labels : ["January","February","March","April","May","June","July"],
+			labels : ["Village1","Village2","Village3","Village4","Village5","Village6","Village7"],
 			datasets : [
 				{
 					label: "My First dataset",
@@ -28,7 +28,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 		}
 		
 	var barChartData = {
-			labels : ["January","February","March","April","May","June","July"],
+			labels : ["Village1","Village2","Village3","Village4","Village5","Village6","Village7"],
 			datasets : [
 				{
 					fillColor : "rgba(220,220,220,0.5)",
