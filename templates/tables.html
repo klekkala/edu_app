@@ -11,8 +11,24 @@
 <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 <link href="{% static 'css/bootstrap-table.css' %}" rel="stylesheet">
 
+
+<!--Icons-->
 <!--Icons-->
 <script src="{% static 'js/lumino.glyphs.js'%}"></script>
+<script src="{% static 'js/jquery-1.11.1.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/chart.min.js'%}"></script>
+<script src="{% static 'js/chart-data.js'%}"></script>
+<script src="{% static 'js/easypiechart.js'%}"></script>
+<script src="{% static 'js/easypiechart-data.js'%}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
+
+<!-- Latest compiled and minified Locales -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/locale/bootstrap-table-zh-CN.min.js"></script>
 
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
@@ -109,13 +125,17 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Table</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="tables/data1.json"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+			
+						<table data-toggle="table" data-url="https://api.myjson.com/bins/1990dt"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
-						        <th data-field="state" data-checkbox="true" >Item ID</th>
-						        <th data-field="id" data-sortable="true">Village</th>
-						        <th data-field="name"  data-sortable="true">Men percentage</th>
-						        <th data-field="price" data-sortable="true">Women percentage</th>
+						        <th data-field="id" data-sortable="true">Id</th>
+						        <th data-field="name"  data-sortable="true">Name</th>
+						        <th data-field="age" data-sortable="true">Age</th>
+						        <th data-field="gender" data-sortable="true">Gender</th>
+						        <th data-field="subject"  data-sortable="true">Subject</th>
+						        <th data-field="score" data-sortable="true">Score</th>
+						        <th data-field="region" data-sortable="true">Region</th>
 						    </tr>
 						    </thead>
 						</table>
@@ -177,7 +197,6 @@
 			}); 
 			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
 		}(window.jQuery);
-
 		$(window).on('resize', function () {
 		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
 		})
