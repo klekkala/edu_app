@@ -2,6 +2,15 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+#views.py
+from django.http import HttpResponse
+
+
+def login(request):
+    return HttpResponse("this is a login")
+
+
+
 @login_required(login_url="login")
 def home(request):
 	return render(request,"index.html")
