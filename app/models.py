@@ -11,3 +11,22 @@ class Test_Data(models.Model):
    score = models.IntegerField()
    subject = models.CharField(max_length = 150)
    region = models.CharField(max_length = 50)
+
+
+
+class User_Data(models.Model):
+   id = models.primary_key=True
+   name = models.CharField(max_length = 50)
+   age = models.IntegerField()
+   gender = models.CharField(max_length = 50)
+   auth = models.BooleanField(default=False)
+   region = models.CharField(max_length = 50)
+
+
+
+
+class Notify_Data(models.Model):
+   id = models.primary_key=True
+   from_user = models.CharField(max_length = 150)
+   to_user = models.CharField(max_length = 150)
+   comment = models.CharField(max_length = 50)
