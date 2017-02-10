@@ -14,13 +14,13 @@ class Test_Data(models.Model):
 
 
 
-class User_Data(models.Model):
+class Users_Data(models.Model):
    id = models.primary_key=True
-   name = models.CharField(max_length = 50)
-   age = models.IntegerField()
-   gender = models.CharField(max_length = 50)
+   name = models.CharField(max_length = 150)
+   user = models.CharField(max_length = 50)
+   email = models.CharField(max_length = 50)
+   password = models.CharField(max_length = 50)
    auth = models.BooleanField(default=False)
-   region = models.CharField(max_length = 50)
 
 
 

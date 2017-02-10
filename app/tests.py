@@ -14,12 +14,6 @@ class LoginTest(TestCase):
         response = self.client.login(username= 'temporary', password= 'temporary')
         self.assertEqual(response, True)
 
-
-    def test_hacker(self):
-        response = self.client.login(username= 'hacker', password= 'hacking')
-        self.assertEqual(response, False)
-
-
     def test_emptypass(self):
         response = self.client.login(username= 'temporary', password= '')
         self.assertEqual(response, False)
@@ -29,14 +23,26 @@ class LoginTest(TestCase):
         response = self.client.login(username= '', password= 'temporary')
         self.assertEqual(response, False)
 
+    def test_emptyform(self):
+        response = self.client.login(username= '', password= '')
+        self.assertEqual(response, False)
+
+    def test_Accountlock(self):
+        user = User.objects.create_user('temporary', 'temporary@gmail.com', 'temporary')
+        for i in range(3):
+            self.client.login(username= 'new', password= 'temporary')
+        response=self.client.login(username= 'temporary', password= 'temporary')
+        self.assertEqual(response, False)
 
 
 class RemoveTest(TestCase):
 
+
     def test_removeuser(self):
-        user = User.objects.delete_user('temporary', 'temporary@gmail.com', 'temporary')
-        response = self.client.login(username= 'temporary', password= 'temporary')
-        self.assertEqual(response, True)
+        user = User.objects.create_user('new', 'new@gmail.com', 'new')
+        user.delete()
+        response = self.client.login(username= 'new', password= 'new')
+        self.assertEqual(response, False)
 
 
 
