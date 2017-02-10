@@ -10,29 +10,35 @@ DjangoHTTPContext.start_environment("tddapp.settings")
 from accounts.views import login
 from django.template.loader import render_to_string
 
-@Vows.batch
-class LoginPageVows(DjangoHTTPContext):
+
+
+class TestLoginForm(TestCase):
 
     def topic(self):
         self.start_server()
 
-    class LoginPageURL(DjangoHTTPContext):
 
-        def topic(self):
-             return self.url("^login/$")
+class TestAddAuth(TestCase):
 
-        def url_should_be_mapped_to_login_view(self, topic):
-            expect(topic).to_match_view(login)
+    def topic(self):
+        self.start_server()
 
-    class LoginPageView(DjangoHTTPContext):
 
-        def topic(self):
-            return login(self.request())
+class TestUpdateData(TestCase):
 
-        def should_return_valid_HTTP_Response(self,topic):
-            expect(topic).to_be_http_response()
+    def topic(self):
+        self.start_server()
 
-        def should_return_login_page(self, topic):
-            loginTemplate = render_to_string("login.html")
-            expect(topic.content.decode()).to_equal(loginTemplate)
 
+
+class TestNotifications(TestCase):
+
+    def topic(self):
+        self.start_server()
+
+
+
+class TestRemoveUsers(TestCase):
+
+    def topic(self):
+        self.start_server()
