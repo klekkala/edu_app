@@ -26,3 +26,5 @@ def widgets(request):
 @login_required(login_url="login")
 def panels(request):
 	return render(request,"panels.html")
+def fire(request):
+	return render(request,"firebase.html")
