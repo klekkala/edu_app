@@ -7,6 +7,7 @@ urlpatterns = [
 	url(r'^tables/',views.tables, name='tables'),
 	url(r'^widgets/',views.widgets, name='widgets'),
 	url(r'^panels/',views.panels, name='panels'),
+	url(r'^fire/',views.fire, name='fire'),
 
 	
 ]
