@@ -12,9 +12,21 @@
 
 var defaultApp = firebase.initializeApp(config);
 defaultDatabase = firebase.database().ref();
-
+var age=[]
+var name=[]
+var score=[]
+var region=[]
+var gender=[]
+var subject=[]
 defaultDatabase.on('child_added',function(snap) {
-	$("#tables").append("<tr><td>"+snap.val().Name+"</td><td>"+snap.val().Age+"</td><td>"+snap.val().Gender+"</td><td>"+snap.val().Subject+"</td><td>"+snap.val().Score+"</td></tr>");
+	age.push(snap.val().Age);
+	name.push(snap.val().Name);
+	score.push(snap.val().Score);
+	subject.push(snap.val().Subject);
+	gender.push(snap.val().gender);
+	region.push(snap.val().Region);
+
+	$("#tables").append("<tr><td>"+snap.val().Name+"</td><td>"+snap.val().Age+"</td><td>"+snap.val().gender+"</td><td>"+snap.val().Region+"</td><td>"+snap.val().Score+"</td></tr>");
 });
 });
  

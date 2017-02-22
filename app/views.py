@@ -13,7 +13,13 @@ def login(request):
 
 @login_required(login_url="login")
 def home(request):
-	return render(request,"index.html")
+	current_user = request.user
+	if current_user.location!="null":
+		location=current_user.location
+		print location
+	else:
+		location="Home"
+	return render(request,"index.html",{'location':location})
 @login_required(login_url="login")
 def charts(request):
 	return render(request,"charts.html")
