@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'axes'
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -52,13 +52,11 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+AUTH_USER_MODEL='app.Myuser'
 ROOT_URLCONF = 'main.urls'
 LOGIN_REDIRECT_URL = '/'
 retry=timedelta(seconds=60)
 AXES_COOLOFF_TIME=retry
-
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -120,8 +118,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
