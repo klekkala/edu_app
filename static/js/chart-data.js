@@ -1,7 +1,7 @@
 var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 	
 	var lineChartData = {
-			labels : ["Bihar","Rajasthan","Tamil Nadu","Karnataka","Haryana","Kerala","Gujarat"],
+			labels : ["Bihar(male,female)","Tamil Nadu(male,female)","Karnataka(male,female)","AndhraPradesh(male,female)"],
 			datasets : [
 				{
 					label: "My First dataset",
@@ -11,8 +11,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-				},
+					data : [549,608,485,455,564]				},
 				{
 					label: "My Second dataset",
 					fillColor : "rgba(48, 164, 255, 0.2)",
@@ -21,28 +20,36 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(48, 164, 255, 1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-				}
+					data : [509,648,425,435,664]}
 			]
 
 		}
 		
 	var barChartData = {
-			labels : ["Bihar","Andhra Pradesh","Tamil Nadu","Karnataka","Haryana","Kerala","Gujarat"],
+			labels : ["Bihar(Aptitdue,maths,english)","Tamil NaduBihar(Aptitdue,maths,english)","KarnatakaBihar(Aptitdue,maths,english)","AndhraPradeshBihar(Aptitdue,maths,english)"],
 			datasets : [
 				{
 					fillColor : "rgba(220,220,220,0.5)",
 					strokeColor : "rgba(220,220,220,0.8)",
 					highlightFill: "rgba(220,220,220,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [145,256,333,233]
+
 				},
 				{
 					fillColor : "rgba(48, 164, 255, 0.2)",
 					strokeColor : "rgba(48, 164, 255, 0.8)",
 					highlightFill : "rgba(48, 164, 255, 0.75)",
 					highlightStroke : "rgba(48, 164, 255, 1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [345,556,233,345]
+				},
+			
+				{
+					fillColor : "rgba(0,0,0,0.5)",
+					strokeColor : "rgba(333,444,555,0.8)",
+					highlightFill: "rgba(333,444,555,0.75)",
+					highlightStroke: "rgba(333,444,555,1)",
+					data : [845,456,543,445]
 				}
 			]
 	
@@ -53,25 +60,25 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					value: 300,
 					color:"#30a5ff",
 					highlight: "#62b9fb",
-					label: "Blue"
+					label: "AndhraPradesh"
 				},
 				{
 					value: 50,
 					color: "#ffb53e",
 					highlight: "#fac878",
-					label: "Orange"
+					label: "TamilNadu"
 				},
 				{
 					value: 100,
 					color: "#1ebfae",
 					highlight: "#3cdfce",
-					label: "Teal"
+					label: "Bihar"
 				},
 				{
 					value: 120,
 					color: "#f9243f",
 					highlight: "#f6495f",
-					label: "Red"
+					label: "Karnataka"
 				}
 
 			];
@@ -81,25 +88,25 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 						value: 300,
 						color:"#30a5ff",
 						highlight: "#62b9fb",
-						label: "Blue"
+						label: "AndhraPradesh"
 					},
 					{
 						value: 50,
 						color: "#ffb53e",
 						highlight: "#fac878",
-						label: "Orange"
+						label: "TamilNadu"
 					},
 					{
 						value: 100,
 						color: "#1ebfae",
 						highlight: "#3cdfce",
-						label: "Teal"
+						label: "Bihar"
 					},
 					{
 						value: 120,
 						color: "#f9243f",
 						highlight: "#f6495f",
-						label: "Red"
+						label: "Karnataka"
 					}
 	
 				];
