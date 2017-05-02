@@ -22,6 +22,13 @@
 <script src="{% static 'js/easypiechart.js'%}"></script>
 <script src="{% static 'js/easypiechart-data.js'%}"></script>
 <script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
+<script src="{% static 'js/jquery-1.11.1.min.js'%}"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
+
+
+
+<script src = "{% static 'js/FireBase.js' %}"></script>
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
 
 <!-- Latest compiled and minified JavaScript -->
@@ -126,16 +133,15 @@
 					<div class="panel-heading">Table</div>
 					<div class="panel-body">
 			
-						<table data-toggle="table" data-url="https://api.myjson.com/bins/1990dt"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table data-toggle="table" id="tables"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
-						        <th data-field="id" data-sortable="true">Id</th>
-						        <th data-field="name"  data-sortable="true">Name</th>
+						        <th data-field="name" data-sortable="true">Name</th>
+						        <th data-field="id"  data-sortable="true">Id</th>
 						        <th data-field="age" data-sortable="true">Age</th>
 						        <th data-field="gender" data-sortable="true">Gender</th>
-						        <th data-field="subject"  data-sortable="true">Subject</th>
-						        <th data-field="score" data-sortable="true">Score</th>
 						        <th data-field="region" data-sortable="true">Region</th>
+						        <th data-field="score" data-sortable="true">Score</th>
 						    </tr>
 						    </thead>
 						</table>
