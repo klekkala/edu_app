@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+
 # Create your views here.
 
 #views.py
@@ -32,5 +34,8 @@ def widgets(request):
 @login_required(login_url="login")
 def panels(request):
 	return render(request,"panels.html")
+@user_passes_test(lambda u:u.is_superuser)
+def setquestion(request):
+	return render(request,"questions_test.html")
 def fire(request):
 	return render(request,"firebase.html")

@@ -18,9 +18,8 @@ var score=[]
 var region=[]
 var gender=[]
 var subject=[]
-JsonData={}
 defaultDatabase.on('child_added',function(snap) {
-	JsonData.push(JSON.stringify(snap.val()));
+	
 	age.push(snap.val().Age);
 	name.push(snap.val().Name);
 	score.push(snap.val().Score);
@@ -30,5 +29,12 @@ defaultDatabase.on('child_added',function(snap) {
 
 	$("#tables").append("<tr><td>"+snap.val().Name+"</td><td>"+snap.val().Age+"</td><td>"+snap.val().Gender+"</td><td>"+snap.val().Region+"</td><td>"+snap.val().score+"</td></tr>");
 });
+
+
+firebase.database().ref('users/').set({
+    username: "SSS"	,
+    email: "email",
+    profile_picture : "imageUrl"
+  });
 });
  

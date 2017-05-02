@@ -1,0 +1,26 @@
+ Question: document.getElementById('question_text').value,
+    choice1: document.getElementById('option1').value,
+    choice2: document.getElementById('option2').value,
+    choice3: document.getElementById('option3').value,
+    choice4: document.getElementById('option4').value,
+    subject:document.getElementById('subject').value
+    
+
+function correct_ans() {
+							
+
+var config = {
+    apiKey: "AIzaSyDkrThcZue7o9NIsNkV8XVHt3qZEPfkJNU",
+    authDomain: "quizdata-b6c64.firebaseapp.com",
+    databaseURL: "https://quizdata-b6c64.firebaseio.com",
+    storageBucket: "quizdata-b6c64.appspot.com",
+    messagingSenderId: "662788470433"
+  };
+  var defaultApp = firebase.initializeApp(config);
+alert(document.getElementById('question_text').value);
+  
+
+					
+					
+						
+}
