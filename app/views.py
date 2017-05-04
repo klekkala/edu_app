@@ -42,6 +42,8 @@ def panels(request):
 @user_passes_test(lambda u:u.is_superuser)
 def setquestion(request):
 	return render(request,"questions_test.html")
+def getquestion(request):
+	return render(request,"quest.html")
 def fire(request):
 	return render(request,"firebase.html")
 @user_passes_test(lambda u:u.is_superuser)
