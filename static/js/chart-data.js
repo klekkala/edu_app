@@ -27,7 +27,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					strokeColor : "rgba(220,220,220,0.8)",
 					highlightFill: "rgba(220,220,220,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",
-					data : [13.5,10,15,8,14,9,12,13,14,8,7,6,13,15,17,11,10,7,13,15,6,14.5,5,15,8,9,17,9]
+					data : [13,10,15,8,14,9,12,13,14,8,7,6,13,15,17,11,10,7,13,15,6,14.5,5,15,8,9,17,9]
 
 				},
 				{
@@ -35,7 +35,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					strokeColor : "rgba(48, 164, 255, 0.8)",
 					highlightFill : "rgba(48, 164, 255, 0.75)",
 					highlightStroke : "rgba(48, 164, 255, 1)",
-					data : [13.5,18,15,12,19,11,10,9,9,14,11,9,13,11,14,9,11,10,9,12,9,12,9,13,15,6,15,12]
+					data : [13,18,15,12,19,11,10,9,9,14,11,9,13,11,14,9,11,10,9,12,9,12,9,13,15,6,15,12]
 				},
 			
 				{

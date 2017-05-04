@@ -20,14 +20,14 @@ var gender=[]
 var subject=[]
 defaultDatabase.on('child_added',function(snap) {
 	
-	age.push(snap.val().Age);
-	name.push(snap.val().Name);
-	score.push(snap.val().Score);
-	subject.push(snap.val().Subject);
-	gender.push(snap.val().Gender);
-	region.push(snap.val().Region);
+	age.push(snap.val().age);
+	name.push(snap.val().first_name);
+	score.push(snap.val().score);
+	subject.push(snap.val().subject);
+	gender.push(snap.val().gender);
+	region.push(snap.val().region);
 
-	$("#tables").append("<tr><td>"+snap.val().Name+"</td><td>"+snap.val().Age+"</td><td>"+snap.val().Gender+"</td><td>"+snap.val().Region+"</td><td>"+snap.val().score+"</td></tr>");
+	$("#tables").append("<tr><td>"+snap.val().first_name+"</td><td>"+snap.val().subject+"</td><td>"+snap.val().gender+"</td><td>"+snap.val().region+"</td><td>"+snap.val().score+"</td></tr>");
 });
 
 

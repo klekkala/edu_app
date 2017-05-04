@@ -11,7 +11,6 @@
 <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 <link href="{% static 'css/bootstrap-table.css' %}" rel="stylesheet">
 
-
 <!--Icons-->
 <!--Icons-->
 <script src="{% static 'js/lumino.glyphs.js'%}"></script>
@@ -22,20 +21,6 @@
 <script src="{% static 'js/easypiechart.js'%}"></script>
 <script src="{% static 'js/easypiechart-data.js'%}"></script>
 <script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
-<script src="{% static 'js/jquery-1.11.1.min.js'%}"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
-
-
-
-<script src = "{% static 'js/FireBase.js' %}"></script>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/bootstrap-table.min.js"></script>
-
-<!-- Latest compiled and minified Locales -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.0/locale/bootstrap-table-zh-CN.min.js"></script>
 
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
@@ -70,8 +55,6 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 		
-	{% if request.user.is_superuser %}
-
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<form role="search">
 			<div class="form-group">
@@ -79,36 +62,40 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+			<li><a href="/"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+			<li><a href="/widgets"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Contact Form</a></li>
 			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
-			<li><a href="/tables"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
-			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
-			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
-			<li><a href="/setquestion"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg>Set Questions</a></li>
-			<li><a href="/register"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Create User</a></li>
+			<li class="active"><a href="/tables"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
+			<!--<li><a href="/forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
+			<li><a href="/panels"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Notifications</a></li>
+			<!--<li><a href="/icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
+			<li class="parent ">
+				<a href="/#">
+					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Take Test
+				</a>
+				<ul class="children collapse" id="sub-item-1">
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
+						</a>
+					</li>
+					<li>
+						<a class="" href="#">
+							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
+						</a>
+					</li>
+				</ul>
+			</li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
+			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
 		</ul>
 
-	</div>
-	{% else %}
-	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-		<form role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-		</form>
-		<ul class="nav menu">
-			<li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
-			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
-			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
-			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
-			<li role="presentation" class="divider"></li>
-			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
-		</ul>
-
-	</div>
-	{% endif %}
+	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
@@ -130,16 +117,13 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Table</div>
 					<div class="panel-body">
-			
-						<table data-toggle="table" id="tables"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
+						<table data-toggle="table" data-url="{% static 'tables/data1.json'%}"  data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 						    <tr>
-						        <th data-field="first_name" data-sortable="true">Name</th>
-						        <th data-field="id"  data-sortable="true">Id</th>
-						        <th data-field="age" data-sortable="true">Age</th>
-						        <th data-field="gender" data-sortable="true">Gender</th>
-						        <th data-field="region" data-sortable="true">Region</th>
-						        <th data-field="score" data-sortable="true">Score</th>
+						        <th data-field="state" data-checkbox="true" >Item ID</th>
+						        <th data-field="id" data-sortable="true">Village</th>
+						        <th data-field="name"  data-sortable="true">Men percentage</th>
+						        <th data-field="price" data-sortable="true">Women percentage</th>
 						    </tr>
 						    </thead>
 						</table>

@@ -1,37 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>Question Page</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumino - Charts</title>
 {% load staticfiles %}
-    <!-- Bootstrap Core CSS -->
-  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'css/datepicker3.css' %}" rel="stylesheet">
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<!--Icons-->
+<script src="{% static 'js/jquery-1.11.1.min.js'%}"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
 
-    <!-- Theme CSS -->
-    <script src="{% static 'js/jquery-1.11.1.min.js'%}"></script>
-	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js"></script>
 
+<!-- Custom Fonts -->
+<link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-	<style>
+<script src="{% static 'js/lumino.glyphs.js'%}"></script>
+<script src="{% static 'js/jquery-1.11.1.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/easypiechart.js'%}"></script>
+<script src="{% static 'js/easypiechart-data.js'%}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js'%}"></script>
+<style>
 		#box {
     
     background: #809fff;
@@ -45,7 +46,7 @@
     
    
     padding: 20px; 
-    width: 850px;
+    width: 780px;
     height: 15px;  
 	
 }
@@ -54,7 +55,7 @@
     
    
     padding: 20px; 
-    width: 850px;
+    width: 780px;
     height: 15px;  
 	
 }
@@ -63,19 +64,12 @@
     
    
     padding: 20px; 
-    width: 850px;
+    width: 780px;
     height: 15px;  
 	
 }
 
-	#option4 {
-    
-   
-    padding: 20px; 
-    width: 850px;
-    height: 15px;  
-	
-}
+
 
 	#question_text {
     
@@ -112,11 +106,7 @@
 	width:25px;
 	height:20px;
 }
-#check4 {
-	
-	width:25px;
-	height:20px;
-}
+
 #mc {
 	display:none;
 }
@@ -215,30 +205,12 @@ var config = {
   };
   var defaultApp = firebase.initializeApp(config);
  var answer=0;
-if(document.getElementById('check1').checked) {
-								answer=1;
-							}
-							else if(document.getElementById('check2').checked) {
-								answer=2;
-							}
-							else if(document.getElementById('check3').checked) {
-								answer=3;
-							}
-							else if(document.getElementById('check4').checked) {
-								answer=4;
-							}
-							
+ alert(document.getElementById('question_text').value);
 var timestamp = new Date().getUTCMilliseconds();
-firebase.database().ref('users/'+(new Date()).getTime()).set({
-    Question: document.getElementById('question_text').value,
-    choice1: document.getElementById('option1').value,
-    choice2: document.getElementById('option2').value,
-    choice3: document.getElementById('option3').value,
-    choice4: document.getElementById('option4').value,
-    subject:document.getElementById('subject').value,
-answer:answer
-		
+firebase.database().ref().set({
 
+hi:"sss",
+hekko:"Aaa"
 });
   
 
@@ -253,58 +225,93 @@ answer:answer
 
 
 </script>
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<![endif]-->
 
 </head>
 
-<body id="page-top" class="index">
-
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand" href="#page-top"><?php echo $_SESSION['room_name']; ?></a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">LAUNCH</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">QUIZZES</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">	ROOMS</a>
-                    </li>
-					<li class="page-scroll">
-						<a href="#contact">REPORTS</a>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>EDU</span>APP</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="/#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
+							<li><a href="/#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
+							<li><a href="/#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+						</ul>
 					</li>
-					<li class="page-scroll">
-						<a href="#contact">RESULTS</a>
-					</li> 
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+				</ul>
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	{% if request.user.is_superuser %}
 
-    
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio">
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
+			<li><a href="/tables"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
+			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
+			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
+			<li><a href="/setquestion"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg>Set Questions</a></li>
+			<li><a href="/register"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Create User</a></li>
+			<li role="presentation" class="divider"></li>
+			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
+		</ul>
+
+	</div>
+	{% else %}
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
+			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
+			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
+			<li role="presentation" class="divider"></li>
+			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
+		</ul>
+
+	</div>
+	{% endif %}
+
+		
+	
+		
+		<div class="row">
+			<div class="col-lg-12">
+				
+				
+			</div>
+		</div><!--/.row-->
+		<section id="portfolio">
         <div class="container">
             <div class="row">
           
-				<h2></h2>
-				&nbsp;&nbsp;
+				
             </div>
             <div class="row">
                 <main>
@@ -312,13 +319,12 @@ answer:answer
 					
 					&nbsp;&nbsp;
 					&nbsp;&nbsp; 
-					<h3><center>Create Quiz</center><h3>
+					<h1><center>Create Quiz</center><h1>
 					
 					<br>
-					<div id="options">
+				<center>	<div id="options">
 					<p class="normal" id="question">
-						QUESTIONS
-					</p>
+						Set Question					</p>
 					</div>
 					<br/>
 					<div id="subjects">
@@ -330,25 +336,18 @@ answer:answer
 						
 						
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
 					
 						<button id="mcq" type="button" class="btn btn-outline-primary" onclick="add()">+ Add question</button>
 						
 					</div>
 					<br>							
 					<div id="mc" class="jumbotron">
-					<form method="post" action="">{% csrf_token %}
+					<form method="post" onsubmit="correct_ans()" action="">{% csrf_token %}
 					
 				
-					<p>
-		
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					
-						<input  id="save"  name="submit" onclick="correct_ans()" class="btn btn-success"/ >
-						</p>
+				
+	
 						
 						<p>
 				
@@ -373,7 +372,7 @@ answer:answer
 						&nbsp;&nbsp;
 								<input id="option1" type="text" name="choice1" size=60 />
 								&nbsp;&nbsp;&nbsp;
-								<label><input id="check1" onclick="correct_ans()" type="checkbox" ></label>
+								<label><input id="check1" type="checkbox" ></label>
 								
 						
 							<br>
@@ -386,7 +385,7 @@ answer:answer
 						&nbsp;&nbsp;
 								<input id="option2" type="text"  name="choice2" size=60 />
 								&nbsp;&nbsp;&nbsp;
-								<label><input id="check2"onclick="correct_ans()" type="checkbox"></label>
+								<label><input id="check2"type="checkbox"></label>
 							
 							<br>
 						</p>
@@ -395,30 +394,16 @@ answer:answer
 						&nbsp;&nbsp;
 								<input id="option3" type="text" name="choice3" size=60 />
 								&nbsp;&nbsp;&nbsp;
-								<label><input id="check3" onclick="correct_ans()" type="checkbox" ></label>
+								<label><input id="check3" type="checkbox" ></label>
 							
 							<br>
 						</p>
-						
-						<p>
-						
-								<label id="box">D</label>
-						&nbsp;&nbsp;
-								<input id="option4" type="text" name="choice4" size=60 />
-								&nbsp;&nbsp;&nbsp;
-								<label><input id="check4" onclick="correct_ans()"type="checkbox"></label>
-							
-							<br>
-						</p>
-					
+					<br>
+						<center><input style="text-color:black"  id="save" type='submit'  value="save" name="add question"  class="btn btn-success"/ >
+					</center>
 							
 					</form>
-				</div>
-					<p id="test">
-					</p>
-					
-					
-					<br>
+				</div></center>
 					
 					
 			<!--	</div> -->
@@ -426,6 +411,23 @@ answer:answer
 			</main>
         </div>
     </section>
-	</body>
-	</html>
 
+
+<script>
+		!function ($) {
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
+		        $(this).find('em:first').toggleClass("glyphicon-minus");      
+		    }); 
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		}(window.jQuery);
+
+		$(window).on('resize', function () {
+		  if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+		})
+		$(window).on('resize', function () {
+		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+		})
+	</script>	
+</body>
+
+</html>

@@ -10,6 +10,11 @@
 <script src="{% static 'js/easypiechart.js' %}"></script>
 <script src="{% static 'js/easypiechart-data.js' %}"></script>
 <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src='https://www.gstatic.com/firebasejs/3.6.9/firebase-app.js'></script>
+	<script src='https://www.gstatic.com/firebasejs/3.6.9/firebase-database.js'></script>
+        <meta http-equiv='Content-Type' content='text/html' charset='utf-8'/>
+        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
 <!--Icons-->
 <script src="{% static 'js/lumino.glyphs.js' %}"></script>
 
@@ -18,9 +23,140 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lumino - Dashboard</title>
+<title>Eduapp</title>
+
+<script>
+
+var global=1000;
+window.average=[0,0,0,0];
+
+ $(document).ready(function(){
+ 	var config = {
+    apiKey: "AIzaSyDkrThcZue7o9NIsNkV8XVHt3qZEPfkJNU",
+    authDomain: "quizdata-b6c64.firebaseapp.com",
+    databaseURL: "https://quizdata-b6c64.firebaseio.com",
+    storageBucket: "quizdata-b6c64.appspot.com",
+    messagingSenderId: "662788470433"
+  };
+  
+
+var defaultApp = firebase.initializeApp(config);
+defaultDatabase = firebase.database().ref();
+var age=[]
+var name=[]
+var score=[]
+var region=[]
+var gender=[]
+var subject=[]
+
+defaultDatabase.on('child_added',function(snap) {
+	age.push(snap.val().Age);
+	name.push(snap.val().Name);
+	score.push(snap.val().Score);
+	subject.push(snap.val().Subject);
+	gender.push(snap.val().gender);
+	region.push(snap.val().Region);
+
+	
+	$("#tables").append("<tr><td>"+snap.val().Name+"</td><td>"+snap.val().Age+"</td><td>"+snap.val().gender+"</td><td>"+region[region.length-1]+"</td><td>"+snap.val().Score+"</td></tr>");
+	findavg(region,score)
+});
+
+});
+
+var MyApp = {}
+
+function findavg(region,score){
 
 
+var Region = [];
+$.each(region, function(i, el){
+    if($.inArray(el, Region) === -1) Region.push(el);
+
+});
+var count=[0,0,0,0];
+
+for (i in Region)
+	{for (j in region)
+{if(Region[i]==region[j])
+{count[i]=count[i]+1;
+window.average[i]=window.average[i]+score[j];}
+}
+
+	}
+for (i in count)
+{
+
+	window.average[i]=window.average[i]/count[i];
+}
+
+MyApp.b=average[1]
+MyApp.c=average[2]
+MyApp.d=average[3]
+console.log(average);
+$("#tables1").append("<tr><td>"+average+"</td></tr>");
+};
+
+//window.average
+console.log(window.average);  
+
+
+       
+           google.load('visualization','1', {'packages': ['geochart']});
+           google.setOnLoadCallback(drawRegionsMap);
+          
+         function drawRegionsMap() {
+	  
+          var data = new google.visualization.DataTable();
+          
+          ap=40
+          arunachal=38 
+	  assam=43
+          bihar=31
+	  Chhattisgarh=40 
+	  Goa=28
+          Gujarat=44  
+          Haryana =20
+	  Himachal=25	
+          Jammu=29		 
+	  Jharkhand = 37
+          Karnataka = 45
+	  Kerala = 50
+	  MP=55
+          Maharashtra = 34
+          Manipur = 45
+          Meghalaya = 55
+          Mizoram = 34
+          Nagaland = 22
+          Odisha = 21
+          Punjab = 15
+          Rajasthan =50
+          Sikkim = 22
+          Tamil = 19
+          Telangana =16
+          Tripura = 42
+          Uttarakhand = 20 
+	  UP=30
+	  WB=12
+          Andaman = 0 
+          Chandigarh = 0 
+          Dadra = 0
+          Daman= 0
+          Delhi = 0 
+          Lakshadweep = 0
+          Pondicherry = 0 
+	  data.addColumn('string','Country');
+          data.addColumn('number','Literacy');
+    data.addRows([[{f:'Andhra Pradesh', v:'IN-AP'},ap], [{f:'Arunachal Pradesh', v:'IN-AR'},arunachal], [{f:'Assam', v:'IN-AS'},assam], [{f:'Bihar', v:'IN-BR'},bihar], [{f:'Chhattisgarh', v:'IN-CT'},Chhattisgarh], [{f:'Goa', v:'IN-GA'},Goa], [{f:'Gujarat', v:'IN-GJ'},Gujarat], [{f:'Haryana', v:'IN-HR'},Haryana], [{f:'Himachal Pradesh', v:'IN-HP'},Himachal], [{f:'Jammu and Kashmir', v:'IN-JK'},Jammu], [{f:'Jharkhand', v:'IN-JH'},Jharkhand], [{f:'Karnataka', v:'IN-KA'},Karnataka], [{f:'Kerala', v:'IN-KL'},Kerala], [{f:'Madhya Pradesh', v:'IN-MP'},MP], [{f:'Maharashtra', v:'IN-MH'},Maharashtra], [{f:'Manipur', v:'IN-MN'},Manipur], [{f:'Meghalaya', v:'IN-ML'},Meghalaya], [{f:'Mizoram', v:'IN-MZ'},Mizoram], [{f:'Nagaland', v:'IN-NL'},Nagaland], [{f:'Odisha', v:'IN-OR'},Odisha], [{f:'Punjab', v:'IN-PB'},Punjab], [{f:'Rajasthan', v:'IN-RJ'},Rajasthan], [{f:'Sikkim', v:'IN-SK'},Sikkim], [{f:'Tamil Nadu', v:'IN-TN'},Tamil], [{f:'Telangana', v:'IN-TG'},Telangana], [{f:'Tripura', v:'IN-TR'},Tripura], [{f:'Uttarakhand (formerly Uttaranchal)', v:'IN-UT'},Uttarakhand], [{f:'Uttar Pradesh', v:'IN-UP'},UP], [{f:'West Bengal', v:'IN-WB'},WB], [{f:'Andaman and Nicobar Islands', v:'IN-AN'},Andaman], [{f:'Chandigarh', v:'IN-CH'},Chandigarh], [{f:'Dadra and Nagar Haveli', v:'IN-DN'},Dadra], [{f:'Daman and Diu', v:'IN-DD'},Daman], [{f:'Delhi', v:'IN-DL'},Delhi], [{f:'Lakshadweep', v:'IN-LD'},Lakshadweep], [{f:'Puducherry (Pondicherry)', v:'IN-PY'},Pondicherry]]);
+
+          var options = {'title':'Map',
+     'width':1100,'height':800,'region':'IN','resolution':'provinces'};
+
+          var container = document.getElementById('map_canvas');
+          var geochart = new google.visualization.GeoChart(container);
+          geochart.draw(data, options);
+      };
+      </script>
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <script src="js/respond.min.js"></script>
@@ -55,7 +191,8 @@
 							
 		</div><!-- /.container-fluid -->
 	</nav>
-		
+	{% if request.user.is_superuser %}
+
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<form role="search">
 			<div class="form-group">
@@ -64,39 +201,38 @@
 		</form>
 		<ul class="nav menu">
 			<li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
-			<li><a href="widgets"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Contact Form</a></li>
-			<li><a href="charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
-			<li><a href="tables"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
+			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
+			<li><a href="/tables"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
 			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
-			<li><a href="panels"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Notifications</a></li>
 			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
-			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Take Test 
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
-				</ul>
-			</li>
+			<li><a href="/setquestion"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg>Set Questions</a></li>
+			<li><a href="/register"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Create User</a></li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
 		</ul>
 
-	</div><!--/.sidebar-->
+	</div>
+	{% else %}
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li class="active"><a href="/#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
+			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
+			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
+			<li role="presentation" class="divider"></li>
+			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
+		</ul>
+
+	</div>
+	{% endif %}
+
+
+<!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
@@ -121,7 +257,7 @@
                                                           <svg class="glyph stroked location pin"><use xlink:href="#stroked-location-pin"><use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">4</div>
+							<div class="large">28</div>
 							<div class="text-muted">States</div>
 						</div>
 					</div>
@@ -134,8 +270,8 @@
 							<svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">0</div>
-							<div class="text-muted">Comments</div>
+							<div class="large">12</div>
+							<div class="text-muted">Min. Average</div>
 						</div>
 					</div>
 				</div>
@@ -147,8 +283,8 @@
 							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">3</div>
-							<div class="text-muted">Total Users</div>
+							<div class="large">55</div>
+							<div class="text-muted">Max. Average</div>
 						</div>
 					</div>
 				</div>
@@ -160,57 +296,15 @@
 							<svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">2k</div>
+							<div class="large">1k</div>
 							<div class="text-muted">Page Views</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div><!--/.row-->
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Overview of Literacy</div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->
-		
-		<div class="row">
-			
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Aptitiude</h4>
-						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Mathametics</h4>
-						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>English</h4>
-						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!--/.row-->
+	<p id="demo"></p>
+    <center>  <div id='map_canvas' ></div></center>		
 								
 		
 

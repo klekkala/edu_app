@@ -51,6 +51,8 @@
 		</div><!-- /.container-fluid -->
 	</nav>
 		
+	{% if request.user.is_superuser %}
+
 	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
 		<form role="search">
 			<div class="form-group">
@@ -58,40 +60,37 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li><a href="/"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>Home</a></li>
-			<li><a href="/widgets"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Contact Form</a></li>
-			<li class="active"><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
+			<li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
 			<li><a href="/tables"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Tables</a></li>
-			<!--<li><a href="/forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
-			<li><a href="/panels"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Notifications</a></li>
-			<!--<li><a href="/icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
-			<li class="parent ">
-				<a href="/#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Take Test 
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
-				</ul>
-			</li>
+			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
+			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
+			<li><a href="/setquestion"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg>Set Questions</a></li>
+			<li><a href="/register"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg>Create User</a></li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
 		</ul>
-		
-	</div><!--/.sidebar-->
+
+	</div>
+	{% else %}
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li class="active"><a href="/#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Home</a></li>
+			<li><a href="/charts"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
+			<!--<li><a href="forms"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>-->
+			<!--<li><a href="icons"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>-->
+			<li role="presentation" class="divider"></li>
+			<li><a href="/login"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Logout</a></li>
+		</ul>
+
+	</div>
+	{% endif %}
+
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
@@ -111,7 +110,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Line Chart</div>
+					<div class="panel-heading">Averge marks Distribution</div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
 							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
@@ -124,7 +123,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Bar Chart</div>
+					<div class="panel-heading">Subject wise Distribution</div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
 							<canvas class="main-chart" id="bar-chart" height="200" width="600"></canvas>
@@ -137,7 +136,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-heading">English</div>
+					<div class="panel-heading">Female Average</div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
 							<canvas class="chart" id="pie-chart" ></canvas>
@@ -147,7 +146,7 @@
 			</div>
 			<div class="col-md-6">
 				<div class="panel panel-default">
-					<div class="panel-heading">Maths</div>
+					<div class="panel-heading">Male Average</div>
 					<div class="panel-body">
 						<div class="canvas-wrapper">
 							<canvas class="chart" id="doughnut-chart" ></canvas>
@@ -162,7 +161,7 @@
 			<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>Aptitiude</h4>
+						<h4>Aptitiude Average</h4>
 						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
 						</div>
 					</div>
@@ -171,7 +170,7 @@
 			<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>Mathametics</h4>
+						<h4>Mathametics Average</h4>
 						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
 						</div>
 					</div>
@@ -180,7 +179,7 @@
 			<div class="col-xs-6 col-md-3">
 				<div class="panel panel-default">
 					<div class="panel-body easypiechart-panel">
-						<h4>English</h4>
+						<h4>English Average</h4>
 						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
 						</div>
 					</div>
